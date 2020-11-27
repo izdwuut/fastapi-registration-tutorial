@@ -1,3 +1,3 @@
 # FastAPI Registration Tutorial
 
-This repo contains code for my tutorial on Medium.
+The code for my tutorial on Medium. The main branch is for the full codebase, while other branches are dedicated for aligning parts of the tutorial.
