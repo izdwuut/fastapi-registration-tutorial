@@ -4,7 +4,7 @@ settings = get_settings()
 
 DB_CONFIG = {
     "connections": {
-        "default": settings.DATABASE_URL
+        "default": settings.DATABASE_URL.split('?')[0]
     },
     "apps": {
         "models": {
