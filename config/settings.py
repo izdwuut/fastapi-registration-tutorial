@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     APP_NAME = 'My App'
     REGISTRATION_TOKEN_LIFETIME = 60 * 60
     TOKEN_ALGORITHM = 'HS256'
+    SMTP_SERVER: str
+    MAIL_SENDER = 'noreply@example.com'
     API_PREFIX = '/api'
     MODELS = [
         'models.users',
