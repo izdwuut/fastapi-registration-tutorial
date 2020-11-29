@@ -17,11 +17,10 @@ class Mailer:
 
     @staticmethod
     def send_confirmation_message(token: str, mail_to: str):
-        confirmation_url = settings.BASE_URL + token
+        confirmation_url = '{}/verify/{}'.format(settings.BASE_URL, token)
         message = '''Hi!
 
-Please confirm your registration: {}.
-'''.format(confirmation_url)
+Please confirm your registration: {}.'''.format(confirmation_url)
         Mailer.send_message(
             message,
             'Please confirm your registration',
