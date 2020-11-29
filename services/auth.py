@@ -21,8 +21,7 @@ class Auth:
         to_encode = data.copy()
         to_encode.update({
             "exp": datetime.utcnow() + timedelta(seconds=expires_delta),
-            "iss": settings.APP_NAME,
-            "aud": settings.HOST
+            "iss": settings.APP_NAME
         })
         return jwt.encode(
             to_encode,
