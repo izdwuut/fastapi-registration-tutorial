@@ -32,12 +32,17 @@ class Auth:
 
     @staticmethod
     def get_confirmation_token(user_id: UUID4):
+        jti = uuid.uuid4()
         claims = {
-            "sub": user_id,
+            "sub": str(user_id),
             "scope": "registration",
-            "jti": uuid.uuid4()
+            "jti": str(jti)
         }
-        return Auth.create_token(
-            claims,
-            settings.REGISTRATION_TOKEN_LIFETIME
-        )
+        return {
+            "jti": jti,
+            "token": Auth.get_token(
+                claims,
+                settings.REGISTRATION_TOKEN_LIFETIME
+            )
+        }
+
