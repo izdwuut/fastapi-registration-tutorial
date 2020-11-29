@@ -12,7 +12,9 @@ class Auth:
         pass
         to_encode = data.copy()
         to_encode.update({
-            "exp": datetime.utcnow() + timedelta(seconds=expires_delta)
+            "exp": datetime.utcnow() + timedelta(seconds=expires_delta),
+            "iss": settings.APP_NAME,
+            "aud": settings.HOST
         })
         return jwt.encode(
             to_encode,
@@ -23,6 +25,6 @@ class Auth:
     @staticmethod
     def create_confirmation_token(user_id: UUID4):
         return Auth.create_token(
-            {"sub": user_id},
+            {"sub": user_id, "scope": "registration"},
             settings.REGISTRATION_TOKEN_LIFETIME
         )
