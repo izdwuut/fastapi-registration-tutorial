@@ -16,7 +16,7 @@ class Auth:
         return cls.password_context.hash(password)
 
     @staticmethod
-    def create_token(data: dict, expires_delta: int):
+    def get_token(data: dict, expires_delta: int):
         pass
         to_encode = data.copy()
         to_encode.update({
@@ -31,7 +31,7 @@ class Auth:
         )
 
     @staticmethod
-    def create_confirmation_token(user_id: UUID4):
+    def get_confirmation_token(user_id: UUID4):
         claims = {
             "sub": user_id,
             "scope": "registration",
