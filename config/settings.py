@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     API_PREFIX = '/api'
     HOST = 'localhost'
     PORT = 8000
-    BASE_URL = '{}:{}/'.format(HOST, str(PORT))
+    BASE_URL = '{}:{}'.format(HOST, str(PORT))
     MODELS = [
         'models.users',
     ]
