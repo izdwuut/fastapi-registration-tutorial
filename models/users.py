@@ -25,4 +25,3 @@ User_Pydantic = pydantic_model_creator(
     exclude=('hashed_password', 'confirmation')
 )
 
-
