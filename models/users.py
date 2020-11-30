@@ -1,5 +1,5 @@
 from tortoise import fields, models
-from pydantic import BaseModel
+import pydantic
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 
@@ -13,15 +13,16 @@ class UserModel(models.Model):
     class Meta:
         table: str = 'users'
 
-    class PydanticMeta:
-        include = ['password']
+
+class CreateUser(pydantic.BaseModel):
+    email: pydantic.EmailStr
+    password: pydantic.SecretStr
 
 
-class CreateUser(BaseModel):
-    email: str
-    password: str
-
-
-User_Pydantic = pydantic_model_creator(UserModel, name='User', exclude=('hashed_password', 'confirmation'))
+User_Pydantic = pydantic_model_creator(
+    UserModel,
+    name='User',
+    exclude=('hashed_password', 'confirmation')
+)
 
 
