@@ -1,8 +1,8 @@
 from smtplib import SMTP
 from email.message import EmailMessage
-from config.settings import Settings
+from config.settings import get_settings
 
-settings = Settings()
+settings = get_settings()
 
 
 class Mailer:
