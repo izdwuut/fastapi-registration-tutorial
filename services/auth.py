@@ -1,11 +1,11 @@
 from jose import jwt
 from datetime import datetime, timedelta
-from config.settings import Settings
+from config.settings import get_settings
 from pydantic import UUID4
 import uuid
 from passlib.context import CryptContext
 
-settings = Settings()
+settings = get_settings()
 
 
 class Auth:
