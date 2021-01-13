@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
 from config.db import DB_CONFIG
-from config.settings import Settings
+from config.settings import get_settings
 import uvicorn
 from routers.auth import auth_router
-settings = Settings()
+settings = get_settings()
 app = FastAPI(title=settings.APP_NAME)
 
 register_tortoise(
