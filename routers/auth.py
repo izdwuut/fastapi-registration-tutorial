@@ -2,11 +2,11 @@ from fastapi import APIRouter
 from fastapi import Depends, HTTPException, status
 from services.auth import Auth
 from services.mailer import Mailer
-from config.settings import Settings
+from config.settings import get_settings
 from models import users
 from jose import jwt
 
-settings = Settings()
+settings = get_settings()
 auth_router = APIRouter()
 
 
