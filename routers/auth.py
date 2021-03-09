@@ -25,8 +25,14 @@ async def register(form_data: users.CreateUser = Depends()):
     )
     confirmation = Auth.get_confirmation_token(user.id)
     user.confirmation = confirmation["jti"]
+    try:
+        Mailer.send_confirmation_message(confirmation["token"], form_data.email)
+    except ConnectionRefusedError:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Email couldn't be send. Please try again."
+        )
     await user.save()
-    Mailer.send_confirmation_message(confirmation["token"], form_data.email)
 
 
 @auth_router.get("/verify/{token}")
